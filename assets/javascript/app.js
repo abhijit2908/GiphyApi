@@ -6,17 +6,17 @@ var giphyButton = ["Dog", "Homework", "Giraffe", "Seth Rogen","tom brady"];
         // Deleting the movie buttons prior to adding new movie buttons
         // (this is necessary otherwise we will have repeat buttons)
         $("#giphybutton").empty();
-        console.log("empty div")
+        //console.log("empty div")
 
         // Looping through the array of movies
         for (var i = 0; i < giphyButton.length; i++) {
-          console.log("for loop")
+          //console.log("for loop")
 
           // Then dynamicaly generating buttons for each movie in the array.
           // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
           var a = $("<button>");
           // Adding a class
-          a.addClass("giphytext");
+          a.addClass("giphytext btn btn-secondary");
           // Adding a data-attribute with a value of the movie at index i
           a.attr("data-name", giphyButton[i]);
           // Providing the button's text with a value of the movie at index i
@@ -73,17 +73,23 @@ $("body").on("click",".giphytext", function(event) {
 
             for (i=0;i<results.length;i++){
 
-              console.log(results[i].images.fixed_height.url);
+              //console.log(results[i].images.fixed_height.url);
+              // var div=$("<div>")
+              // div.addClass("col-md-3")
               var p = $("<p>").text("Rating: " + results[i].rating);
               var images=$('<img>');
+              //var div=$('<div>')
+              //div.appendChild(images);
+              //div.appendChild(p);
               images.addClass("gifs")
-
               images.attr("src",results[i].images.fixed_height_still.url);
               images.attr("data-still",results[i].images.fixed_height_still.url);
               images.attr("data-state","still");
               images.attr("data-animate",results[i].images.fixed_height.url);
-            
-              $("#giphyoutput").prepend(images);
+              //$(div).prepend(p);
+             // $(div).prepend(images);
+              //$(div).append("#giphyoutput");
+             $("#giphyoutput").prepend(images);
               $("#giphyoutput").prepend(p);
 
             }
